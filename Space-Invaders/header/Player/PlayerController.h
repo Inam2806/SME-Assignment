@@ -1,14 +1,18 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include "../Collision/ICollider.h"
 #include "../../header/Powerup/PowerupConfig.h"
 #include "../../header/Player/PlayerModel.h"
 #include "../../header/Player/PlayerView.h"
 
-namespace Player
-{
-    class PlayerController : public Collision::ICollider
-    {
+namespace Player {
+    class PlayerView;
+    class PlayerModel;
+}
+
+namespace Player {
+    class PlayerController : public Collision::ICollider {
     private:
         float elapsed_shield_duration;
         float elapsed_rapid_fire_duration;
@@ -29,9 +33,9 @@ namespace Player
         void updateFreezDuration();
         void freezPlayer();
         void updatePowerupDuration();
-       
-        void disableShield();   
-        void disableRapidFire();    
+
+        void disableShield();
+        void disableRapidFire();
         void disableTrippleLaser();
 
         void saveHighScore();
@@ -51,7 +55,7 @@ namespace Player
         inline void decreaseScore(int val) { PlayerModel::player_score -= val; }
         inline void increaseEnemiesKilled(int val) { PlayerModel::enemies_killed += val; }
         inline void increaseBulletsFired(int val) { PlayerModel::bullets_fired += val; }
-        
+
         void enableShield();
         void enableRapidFire();
         void enableTrippleLaser();
